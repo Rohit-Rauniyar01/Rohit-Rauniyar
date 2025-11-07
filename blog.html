@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Blog</title>
+  <link rel="icon" href="assets/Logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <style>
+    /* ======== Global Reset ======== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* ======== Color Variables ======== */
+    :root {
+      --primary-blue: #1a365d;
+      --secondary-blue: #2d3748;
+      --accent-blue: #3182ce;
+      --text-light: #e2e8f0;
+      --text-dark: #2d3748;
+      --background: #f7fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+      color: var(--text-dark);
+      background: var(--background);
+    }
+
+    .header {
+      background: var(--primary-blue);
+      color: white;
+      padding: 1rem 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: #63b3ed;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #63b3ed;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Banner */
+    .banner {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%) !important;
+      color: var(--white);
+      padding: 156px 0 115px;
+      text-align: center;
+      margin-top: 70px;
+    }
+
+    .banner h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Blog Section */
+    .blog-section {
+      width: 90%;
+      max-width: 1200px;
+      margin: 4rem auto;
+    }
+
+    .blog-section h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--primary-blue);
+    }
+
+    .blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .blog-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+    }
+
+    .blog-content h3 {
+      color: var(--secondary-blue);
+      margin-bottom: 0.8rem;
+      line-height: 1.4;
+    }
+
+    .blog-content p {
+      color: #4a5568;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .blog-content a {
+      text-decoration: none;
+      color: var(--accent-blue);
+      font-weight: 600;
+      transition: color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .blog-content a:hover {
+      color: var(--primary-blue);
+    }
+
+    .blog-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: #718096;
+    }
+
+    /* Footer */
+    .footer_area {
+      background: var(--primary-blue);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer_top {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .footer_logo img {
+      height: 80px;
+      margin-bottom: 20px;
+    }
+
+    .footer_logo h4 {
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .footer_social {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    /* Footer Social Icons Fix */
+    .footer_social a {
+      color: var(--text-light);
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      width: 45px;
+      height: 45px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .footer_social a:hover {
+      color: #63b3ed;
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer_bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-text {
+      color: var(--text-light);
+      margin-bottom: 0;
+    }
+
+    /* Loading Animation */
+    .loading {
+      text-align: center;
+      color: var(--accent-blue);
+      font-size: 1.1rem;
+      padding: 2rem;
+    }
+
+    .loading:after {
+      content: '...';
+      animation: dots 1.5s steps(4, end) infinite;
+    }
+
+    @keyframes dots {
+      0%, 20% { content: '.'; }
+      40% { content: '..'; }
+      60%, 100% { content: '...'; }
+    }
+
+    .error-message {
+      text-align: center;
+      color: #e53e3e;
+      padding: 2rem;
+      background: #fed7d7;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .no-posts {
+      text-align: center;
+      color: var(--secondary-blue);
+      padding: 2rem;
+      font-size: 1.1rem;
+      grid-column: 1 / -1;
+    }
+
+    .no-posts a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .no-posts a:hover {
+      color: var(--primary-blue);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--primary-blue);
+        flex-direction: column;
+        padding: 1rem 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .nav-links li {
+        margin: 0.5rem 2rem;
+      }
+      
+      .banner h1 {
+        font-size: 2.2rem;
+      }
+      
+      .blog-section h2 {
+        font-size: 2rem;
+      }
+
+      .blog-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Rohit <span>Rauniyar</span></div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Skill.html">Skills</a></li>
+                <li><a href="project.html">Projects</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="Index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+  <section class="banner">
+    <h1>My Blog Posts</h1>
+    <p>Fresh content straight from Medium</p>
+  </section>
+
+  <section class="blog-section">
+    <h2>Latest Articles</h2>
+    <div class="blog-container" id="medium-posts">
+      <div class="loading">Loading blog posts</div>
+    </div>
+  </section>
+
+  <footer class="footer_area">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <div class="footer_top flex-column">
+            <div class="footer_logo">
+              <h4>Connect With Me</h4>
+            </div>
+            <div class="footer_social">
+              <a href="https://x.com/Rohit456321" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.linkedin.com/in/rohitrauniyar-rr/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://github.com/Rohit-Rauniyar01" target="_blank"><i class="fab fa-github"></i></a>
+              <a href="mailto:rohitgupta2019email@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row footer_bottom justify-content-center">
+            <p class="col-lg-8 col-sm-12 footer-text">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+                    by 
+                    Rohit Rauniyar. All rights reserved.
+                </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced static blog posts with cybersecurity-themed images
+    const staticBlogPosts = [
+      {
+        title: "Getting Started with Cybersecurity",
+        description: "A beginner's guide to understanding the fundamentals of cybersecurity and building a strong foundation in information security.",
+        thumbnail: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
+        link: "https://medium.com/@rohitrauniyar/getting-started-with-cybersecurity",
+        date: "Jan 15, 2024",
+        readTime: "5 min read"
+      },
+      {
+        title: "Network Security Fundamentals",
+        description: "Exploring the core concepts of network security, including firewalls, intrusion detection systems, and secure network architecture.",
+        thumbnail: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop",
+        link: "https://medium.com/@rohitrauniyar/network-security-fundamentals",
+        date: "Feb 3, 2024",
+        readTime: "7 min read"
+      },
+      {
+        title: "Cryptography in Modern Security",
+        description: "Understanding how encryption and cryptographic protocols protect data in transit and at rest in today's digital landscape.",
+        thumbnail: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=400&fit=crop",
+        link: "https://medium.com/@rohitrauniyar/cryptography-in-modern-security",
+        date: "Mar 12, 2024",
+        readTime: "6 min read"
+      },
+      {
+        title: "SOC Analyst Day in the Life",
+        description: "A detailed look at the daily responsibilities and challenges faced by Security Operations Center analysts.",
+        thumbnail: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop",
+        link: "https://medium.com/@rohitrauniyar/soc-analyst-day-in-the-life",
+        date: "Apr 8, 2024",
+        readTime: "8 min read"
+      },
+      {
+        title: "Python for Security Automation",
+        description: "Learn how to use Python scripting to automate security tasks and enhance your cybersecurity workflow.",
+        thumbnail: "https://images.unsplash.com/photo-1526379879527-8559ecfcaec0?w=600&h=400&fit=crop",
+        link: "https://medium.com/@rohitrauniyar/python-for-security-automation",
+        date: "May 21, 2024",
+        readTime: "10 min read"
+      },
+      {
+        title: "Threat Intelligence Fundamentals",
+        description: "Understanding threat intelligence and how it helps organizations proactively defend against cyber threats.",
+        thumbnail: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&h=400&fit=crop",
+        link: "https://medium.com/@rohitrauniyar/threat-intelligence-fundamentals",
+        date: "Jun 14, 2024",
+        readTime: "6 min read"
+      }
+    ];
+
+    // Enhanced function to fetch Medium posts with better image extraction
+    async function loadMediumPosts() {
+      const container = document.getElementById("medium-posts");
+      
+      try {
+        container.innerHTML = '<div class="loading">Loading blog posts from Medium</div>';
+        
+        // Using RSS2JSON service with multiple fallback options
+        const rssUrls = [
+          'https://medium.com/feed/@rohitrauniyar',
+          'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@rohitrauniyar',
+          'https://corsproxy.io/?url=https://medium.com/feed/@rohitrauniyar'
+        ];
+        
+        let success = false;
+        
+        for (const url of rssUrls) {
+          try {
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                'Accept': 'application/json',
+              },
+              mode: 'cors'
+            });
+            
+            if (response.ok) {
+              const data = await response.json();
+              
+              if (data.items && data.items.length > 0) {
+                const processedPosts = processMediumPosts(data.items);
+                displayPosts(processedPosts);
+                success = true;
+                break;
+              }
+            }
+          } catch (error) {
+            console.log(`Attempt failed for ${url}`, error);
+            continue;
+          }
+        }
+        
+        if (!success) {
+          throw new Error('All RSS methods failed');
+        }
+        
+      } catch (error) {
+        console.error('All Medium fetch methods failed:', error);
+        // Show enhanced static posts as fallback
+        displayPosts(staticBlogPosts);
+      }
+    }
+
+    function processMediumPosts(posts) {
+      return posts.slice(0, 6).map(post => {
+        // Extract thumbnail from Medium post
+        let thumbnail = extractThumbnail(post);
+        
+        // If no thumbnail found, use cybersecurity-themed fallback
+        if (!thumbnail || thumbnail.includes('default')) {
+          thumbnail = getCybersecurityImage(post.title);
+        }
+        
+        // Clean description
+        const description = cleanDescription(post.description || post.content || '');
+        
+        return {
+          title: post.title,
+          description: description,
+          thumbnail: thumbnail,
+          link: post.link,
+          date: formatDate(post.pubDate),
+          readTime: estimateReadTime(post.content || post.description)
+        };
+      });
+    }
+
+    function extractThumbnail(post) {
+      // Method 1: Check for thumbnail in content
+      const content = post.content || post.description || '';
+      const imgRegex = /<img[^>]+src="([^">]+)"/g;
+      const matches = [...content.matchAll(imgRegex)];
+      
+      if (matches.length > 0) {
+        // Return the first image that's not a tiny icon
+        for (const match of matches) {
+          const imgUrl = match[1];
+          if (imgUrl && !imgUrl.includes('emoji') && !imgUrl.includes('icon')) {
+            return imgUrl;
+          }
+        }
+      }
+      
+      // Method 2: Check for media content
+      if (post.thumbnail) {
+        return post.thumbnail;
+      }
+      
+      return null;
+    }
+
+    function getCybersecurityImage(title) {
+      // Cybersecurity-themed images based on post content
+      const securityImages = [
+        'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop', // Network
+        'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&h=400&fit=crop', // Security
+        'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=600&h=400&fit=crop', // Code
+        'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop', // Data
+        'https://images.unsplash.com/photo-1526379879527-8559ecfcaec0?w=600&h=400&fit=crop', // Python
+        'https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&h=400&fit=crop'  // Threat
+      ];
+      
+      // Simple hash based on title to get consistent image for same title
+      let hash = 0;
+      for (let i = 0; i < title.length; i++) {
+        hash = title.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      const index = Math.abs(hash) % securityImages.length;
+      
+      return securityImages[index];
+    }
+
+    function cleanDescription(html) {
+      // Remove HTML tags and limit length
+      const text = html.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').trim();
+      return text.length > 150 ? text.substring(0, 150) + '...' : text;
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return 'Recent';
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'short', 
+        day: 'numeric' 
+      });
+    }
+
+    function estimateReadTime(content) {
+      const wordsPerMinute = 200;
+      const wordCount = content.split(/\s+/).length;
+      const minutes = Math.ceil(wordCount / wordsPerMinute);
+      return `${minutes} min read`;
+    }
+
+    function displayPosts(posts) {
+      const container = document.getElementById("medium-posts");
+      
+      if (!posts || posts.length === 0) {
+        container.innerHTML = `
+          <div class="no-posts">
+            <p>No blog posts found yet.</p>
+            <p>Check out my <a href="https://medium.com/@rohitrauniyar" target="_blank">Medium profile</a> for my latest articles.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = posts.map(post => `
+        <div class="blog-card">
+          <img src="${post.thumbnail}" alt="${post.title}" 
+               onerror="this.src='${getCybersecurityImage(post.title)}'">
+          <div class="blog-content">
+            <h3>${post.title}</h3>
+            <p>${post.description}</p>
+            <a href="${post.link}" target="_blank">
+              Read More <i class="fas fa-arrow-right"></i>
+            </a>
+            <div class="blog-meta">
+              <span>${post.date}</span>
+              <span>${post.readTime}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Mobile Menu Toggle
+    document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking links
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.remove('active');
+      });
+    });
+
+    // Enhanced loading with timeout
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set a timeout to ensure loading doesn't hang
+      const loadTimeout = setTimeout(() => {
+        const container = document.getElementById("medium-posts");
+        if (container.innerHTML.includes('Loading')) {
+          displayPosts(staticBlogPosts);
+        }
+      }, 5000);
+
+      loadMediumPosts().finally(() => {
+        clearTimeout(loadTimeout);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/Logo.png" type="image/png">
+    <title>Rohit Rauniyar - Security Analyst</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1a365d;
+            --secondary-blue: #2d3748;
+            --accent-blue: #3182ce;
+            --text-light: #e2e8f0;
+            --text-dark: #2d3748;
+            --background: #f7fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--background);
+        }
+
+        /* Professional Header */
+        .header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #63b3ed;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #63b3ed;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #63b3ed;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            color: var(--primary-blue);
+            background: #4299e1;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #63b3ed;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            color: var(--primary-blue);
+            background: #4299e1;
+            transform: translateY(-2px);
+        }
+
+        /* Social Media Icons - Fixed */
+        .social-media-floating {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+            background: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--card-bg);
+            padding: 4rem 0;
+            margin-top: -2rem;
+            position: relative;
+            z-index: 2;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-dark {
+            background: var(--secondary-blue);
+            color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        /* Skills Grid - Updated for Beginner Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Grid - Updated with Images */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: rgba(49, 130, 206, 0.1);
+            color: var(--accent-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            background: none;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: var(--border);
+            color: var(--primary-blue);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .modal-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            justify-content: center;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #63b3ed;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary-blue);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 0.5rem 2rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 20px;
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Professional Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Rohit <span>Rauniyar</span></div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Skill.html">Skills</a></li>
+                <li><a href="project.html">Projects</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="Index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-badge">
+                <i class="fas fa-shield-alt"></i> Security Analyst
+            </div>
+            <h1 class="hero-title">Rohit Rauniyar</h1>
+            <p class="hero-subtitle">
+                Protecting digital infrastructure through advanced security solutions, 
+                threat intelligence, and proactive cybersecurity measures.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-shield-alt"></i> Start Security Audit
+                </a>
+                <a href="/assets/RohitRauniyar(R2).pdf" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+            
+            <!-- Fixed Social Media Icons -->
+            <div class="social-media-floating">
+                <a href="https://www.linkedin.com/in/rohitrauniyar-rr/" class="social-icon" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://x.com/Rohit456321" class="social-icon" target="_blank">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://github.com/Rohit-Rauniyar01" class="social-icon" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:rohitgupta2019email@gmail.com" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card">
+                <span class="stat-number">2+</span>
+                <span class="stat-label">Projects Secured</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">10+</span>
+                <span class="stat-label">Vulnerabilities Fixed</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Monitoring</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">Uptime</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section - Updated for Beginner Skills -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Security Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Network Fundamentals</h3>
+                    <p>TCP/IP protocols, subnetting, basic network configuration and troubleshooting</p>
+                </div>
+                <!-- <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Vulnerability Basics</h3>
+                    <p>Understanding common vulnerabilities, OWASP Top 10 awareness, basic scanning</p>
+                </div> -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Security Fundamentals</h3>
+                    <p>Encryption concepts, authentication methods, basic security principles</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3>Linux & Windows Basics</h3>
+                    <p>Command line proficiency, system administration fundamentals</p>
+                </div>
+                <!-- <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Scripting Knowledge</h3>
+                    <p>Python/Bash scripting for automation and basic security tools</p>
+                </div> -->
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security Tools</h3>
+                    <p>Familiarity with Wireshark, Nmap, Metasploit, and basic security frameworks</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section - Updated with Images and Modal -->
+    <section class="section section-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Recent Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card" data-project="network-scanner">
+                    <div class="project-image">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Network Security Scanner</h3>
+                        <p>Python-based network vulnerability scanner with comprehensive reporting</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Nmap</span>
+                            <span class="tech-tag">Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card" data-project="password-manager">
+                    <div class="project-image">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Secure Password Manager</h3>
+                        <p>Encrypted password storage solution with master password protection</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Encryption</span>
+                            <span class="tech-tag">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card" data-project="malware-detector">
+                    <div class="project-image">
+                        <i class="fas fa-virus"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Basic Malware Detector</h3>
+                        <p>Signature-based malware detection system with real-time monitoring</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">YARA</span>
+                            <span class="tech-tag">Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p>Ready to secure your digital assets? Let's discuss your security needs.</p>
+                <div style="margin: 2rem 0;">
+                    <a href="mailto:rohitgupta2019email@gmail.com" class="btn btn-primary" style="margin: 0.5rem;">
+                        <i class="fas fa-envelope"></i> Email Me
+                    </a>
+                    <a href="tel:+919905729054" class="btn btn-secondary" style="margin: 0.5rem;">
+                        <i class="fas fa-phone"></i> Call Me
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <div class="modal-image" id="modalProjectImage">
+                    <!-- Project icon will be inserted here -->
+                </div>
+                <h2 id="modalProjectTitle"></h2>
+                <p id="modalProjectDescription"></p>
+                <div class="modal-tech" id="modalProjectTech">
+                    <!-- Tech tags will be inserted here -->
+                </div>
+            </div>
+            <div id="modalProjectDetails">
+                <!-- Project details will be inserted here -->
+            </div>
+            <div class="modal-actions">
+                <a href="#" id="modalGithubLink" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <!-- <button class="btn btn-secondary close-modal">
+                    <i class="fas fa-times"></i> Close
+                </button> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo" style="margin-bottom: 1rem;">Rohit <span>Rauniyar</span></div>
+            <p>Security Analyst & Cybersecurity Specialist</p>
+            <!-- <div class="social-links">
+                <a href="https://www.linkedin.com/in/rohitrauniyar-rr/" target="_blank" class="social-link">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://x.com/Rohit456321" target="_blank" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://github.com/Rohit-Rauniyar01" target="_blank" class="social-link">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="mailto:rohitgupta2019email@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div> -->
+            <p class="col-lg-8 col-sm-12 footer-text">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+                    <i class="fa fa-heart-o" aria-hidden="true"></i> by 
+                    Rohit Rauniyar. All rights reserved.
+                </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Project Data
+        const projects = {
+            'network-scanner': {
+                title: 'Network Security Scanner',
+                description: 'Python-based network vulnerability scanner with comprehensive reporting',
+                icon: '<i class="fas fa-search"></i>',
+                iconStyle: 'background: linear-gradient(135deg, #1a365d, #3182ce);',
+                tech: ['Python', 'Nmap', 'Socket Programming', 'Multi-threading'],
+                details: `
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="margin-bottom: 1rem;">A comprehensive network security scanner built with Python that helps identify vulnerabilities and misconfigurations in network infrastructure.</p>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 1.5rem 0 0.5rem 0;">Features:</h4>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>Port scanning and service detection</li>
+                        <li>Vulnerability assessment</li>
+                        <li>Network mapping</li>
+                        <li>Comprehensive reporting</li>
+                        <li>Multi-threaded scanning</li>
+                    </ul>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 1.5rem 0 0.5rem 0;">Technologies Used:</h4>
+                    <p>Python, Nmap integration, Socket programming, Threading, Report generation</p>
+                `,
+                github: 'https://github.com/Rohit-Rauniyar01/network-scanner'
+            },
+            'password-manager': {
+                title: 'Secure Password Manager',
+                description: 'Encrypted password storage solution with master password protection',
+                icon: '<i class="fas fa-key"></i>',
+                iconStyle: 'background: linear-gradient(135deg, #2d3748, #4a5568);',
+                tech: ['Python', 'SQLite', 'Encryption', 'Tkinter'],
+                details: `
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="margin-bottom: 1rem;">A secure local password manager that encrypts all stored passwords using AES encryption and protects them with a master password.</p>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 1.5rem 0 0.5rem 0;">Features:</h4>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>Master password protection</li>
+                        <li>AES-256 encryption</li>
+                        <li>Local SQLite database</li>
+                        <li>User-friendly GUI</li>
+                        <li>Password generator</li>
+                    </ul>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 1.5rem 0 0.5rem 0;">Security Features:</h4>
+                    <p>Encryption at rest, Secure key derivation, No cloud storage, Local data only</p>
+                `,
+                github: 'https://github.com/Rohit-Rauniyar01/password-manager'
+            },
+            'malware-detector': {
+                title: 'Basic Malware Detector',
+                description: 'Signature-based malware detection system with real-time monitoring',
+                icon: '<i class="fas fa-virus"></i>',
+                iconStyle: 'background: linear-gradient(135deg, #e53e3e, #c53030);',
+                tech: ['Python', 'YARA', 'File Analysis', 'Pattern Matching'],
+                details: `
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Project Overview</h3>
+                    <p style="margin-bottom: 1rem;">A signature-based malware detection tool that scans files and processes for known malware patterns using YARA rules.</p>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 1.5rem 0 0.5rem 0;">Features:</h4>
+                    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>YARA rule integration</li>
+                        <li>Real-time file monitoring</li>
+                        <li>Process scanning</li>
+                        <li>Custom rule creation</li>
+                        <li>Detailed reporting</li>
+                    </ul>
+                    
+                    <h4 style="color: var(--primary-blue); margin: 1.5rem 0 0.5rem 0;">Detection Capabilities:</h4>
+                    <p>Known malware signatures, Suspicious patterns, Heuristic analysis, Custom threat intelligence</p>
+                `,
+                github: 'https://github.com/Rohit-Rauniyar01/malware-detector'
+            }
+        };
+
+        // Project Modal Functionality
+        const projectCards = document.querySelectorAll('.project-card');
+        const modal = document.getElementById('projectModal');
+        const closeModal = document.querySelector('.close-modal');
+        const modalTitle = document.getElementById('modalProjectTitle');
+        const modalDescription = document.getElementById('modalProjectDescription');
+        const modalImage = document.getElementById('modalProjectImage');
+        const modalTech = document.getElementById('modalProjectTech');
+        const modalDetails = document.getElementById('modalProjectDetails');
+        const modalGithubLink = document.getElementById('modalGithubLink');
+
+        projectCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                const project = projects[projectId];
+                
+                if (project) {
+                    modalTitle.textContent = project.title;
+                    modalDescription.textContent = project.description;
+                    modalImage.innerHTML = project.icon;
+                    modalImage.style = project.iconStyle;
+                    
+                    // Generate tech tags
+                    modalTech.innerHTML = project.tech.map(tech => 
+                        `<span class="tech-tag">${tech}</span>`
+                    ).join('');
+                    
+                    // Set project details
+                    modalDetails.innerHTML = project.details;
+                    
+                    // Set GitHub link
+                    modalGithubLink.href = project.github;
+                    
+                    // Show modal
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Simple smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+
+        // Simple counter animation
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.innerText.replace('+', '');
+                const count = +counter.getAttribute('data-count') || 0;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.setAttribute('data-count', Math.ceil(count + increment));
+                    counter.innerText = Math.ceil(count + increment) + '+';
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target + '+';
+                }
+            };
+
+            // Start counting when element is in viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counter.setAttribute('data-count', '0');
+                        updateCount();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+
+            observer.observe(counter);
+        });
+
+        // Add active class to navigation links on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
