@@ -1,0 +1,1209 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="icon" href="assets/Logo.png" type="image/png">
+	<title>Projects - Rohit Rauniyar | Security Analyst</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="vendors/linericon/style.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="vendors/nice-select/css/nice-select.css">
+	<!-- main css -->
+	<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1a365d;
+            --secondary-blue: #2d3748;
+            --accent-blue: #3182ce;
+            --text-light: #e2e8f0;
+            --text-dark: #2d3748;
+            --background: #f7fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--background);
+        }
+
+        /* Professional Header - EXACT COPY FROM INDEX.HTML */
+        .header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #63b3ed;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #63b3ed;
+        }
+        ul{
+            margin-bottom: 0;
+        }
+
+         .banner_area {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%) !important;
+            color: var(--white);
+            padding: 156px 0 115px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .banner_content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .page_link a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .page_link a:hover {
+            color: #63b3ed;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Project Filters */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-blue);
+            color: var(--accent-blue);
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent-blue);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 54, 93, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .project-btn {
+            padding: 10px 20px;
+            background: var(--white);
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .project-btn:hover {
+            background: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-category {
+            display: inline-block;
+            background: rgba(49, 130, 206, 0.1);
+            color: var(--accent-blue);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .project-description {
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background: rgba(49, 130, 206, 0.1);
+            color: var(--accent-blue);
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid var(--border);
+        }
+
+        .project-date {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .project-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Project Details Modal */
+        .project-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            margin: 50px auto;
+            max-width: 900px;
+            border-radius: 15px;
+            position: relative;
+            border: 1px solid var(--border);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--primary-blue);
+            cursor: pointer;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .modal-image {
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+                border-radius: 14px 14px;
+
+        }
+
+        .modal-body {
+            padding: 40px;
+        }
+
+        .modal-category {
+            background: rgba(49, 130, 206, 0.1);
+            color: var(--accent-blue);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+
+        .modal-description {
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .modal-features {
+            margin-bottom: 30px;
+        }
+
+        .modal-features h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            color: var(--text-dark);
+            position: relative;
+            padding-left: 25px;
+            opacity: 0.9;
+        }
+
+        .features-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        .modal-tech {
+            margin-bottom: 30px;
+        }
+
+        .modal-tech h4 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Newsletter */
+        .newsletter_area {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .subscription_box h2 {
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .subscription_box p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .primary_btn {
+            background: var(--accent-blue);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .primary_btn:hover {
+            background: #2b6cb0;
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+
+        /* Footer */
+        .footer_area {
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer_top {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer_logo img {
+            height: 80px;
+            margin-bottom: 20px;
+        }
+
+        .footer_logo h4 {
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .footer_social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer_social a {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .footer_social a:hover {
+            color: #63b3ed;
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer_bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-filters {
+                gap: 10px;
+            }
+            
+            .filter-btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .banner_content h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .banner_area {
+                padding: 120px 0 60px;
+                margin-top: 68px;
+            }
+            
+            .project-content {
+                padding: 20px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+        <header class="header">
+        <nav class="nav-container">
+            <div class="logo">Rohit <span>Rauniyar</span></div>
+            <ul class="nav-links">
+                <li><a href="Index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="Skill.html">Skills</a></li>
+                <li><a href="project.html">Projects</a></li>
+                <li><a href="certifications.html">Certifications</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="Index.html#contact">Contact</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+
+    <!--================ Start Banner Area =================-->
+    <section class="banner_area">
+        <div class="banner_inner d-flex align-items-center">
+            <div class="container">
+                <div class="banner_content text-center">
+                    <h2>My Projects</h2>
+                    <div class="page_link">
+                        <a href="index.html">Home</a>
+                        <a href="portfolio-details.html">Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Banner Area =================-->
+
+    <!--================ Start Projects Section =================-->
+    <section class="projects-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Security Projects Portfolio</h2>
+                <p>Showcasing my expertise in cybersecurity through practical implementations and real-world solutions</p>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="projects-grid">
+                <!-- Project 1: Caesar Cipher -->
+                <div class="project-card" data-category="cryptography">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMjAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFlNDBhZiIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkN5cHRvZ3JhcGh5PC90ZXh0Pjwvc3ZnPg==" alt="Caesar Cipher">
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                <a href="#" class="project-btn view-details" data-project="1">View Details</a>
+                                <a href="https://github.com/Rohit-Rauniyar01" class="project-btn" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Cryptography</span>
+                        <h3 class="project-title">Caesar Cipher Implementation</h3>
+                        <p class="project-description">A Python-based implementation of the classic Caesar cipher algorithm for educational purposes in cryptography.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Cryptography</span>
+                            <span class="tech-tag">Encryption</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-date">Completed: Jan 2023</span>
+                            <!-- <a href="#" class="project-link view-details" data-project="1">Read More →</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Network Sniffer -->
+                <div class="project-card" data-category="tools network">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMjAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzMwMzk5ZiIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ldHdvcmsgQW5hbHlzaXM8L3RleHQ+PC9zdmc+" alt="Network Sniffer">
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                <a href="#" class="project-btn view-details" data-project="2">View Details</a>
+                                <a href="https://github.com/Rohit-Rauniyar01" class="project-btn" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Network Security</span>
+                        <h3 class="project-title">Network Traffic Analyzer</h3>
+                        <p class="project-description">Advanced network packet sniffer for monitoring and analyzing network traffic for security assessment.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scapy</span>
+                            <span class="tech-tag">Network Security</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-date">Completed: Mar 2023</span>
+                            <!-- <a href="#" class="project-link view-details" data-project="2">Read More →</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Secure File Transfer -->
+                <div class="project-card" data-category="cryptography tools">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMjAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzA2YjZkNCIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZpbGUgU2VjdXJpdHk8L3RleHQ+PC9zdmc+" alt="Secure File Transfer">
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                <a href="#" class="project-btn view-details" data-project="3">View Details</a>
+                                <a href="https://github.com/Rohit-Rauniyar01" class="project-btn" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Data Security</span>
+                        <h3 class="project-title">Encrypted File Transfer System</h3>
+                        <p class="project-description">Secure file transfer application with end-to-end encryption ensuring data confidentiality during transmission.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AES Encryption</span>
+                            <span class="tech-tag">Socket Programming</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-date">Completed: May 2023</span>
+                            <!-- <a href="#" class="project-link view-details" data-project="3">Read More →</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Web Vulnerability Scanner -->
+                <div class="project-card" data-category="web-security tools">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMjAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzNiODJmNiIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldlYiBTZWN1cml0eTwvdGV4dD48L3N2Zz4=" alt="Web Vulnerability Scanner">
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                <a href="#" class="project-btn view-details" data-project="4">View Details</a>
+                                <a href="https://github.com/Rohit-Rauniyar01" class="project-btn" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Web Security</span>
+                        <h3 class="project-title">Web Application Security Scanner</h3>
+                        <p class="project-description">Automated vulnerability scanner for web applications detecting common security issues and misconfigurations.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OWASP</span>
+                            <span class="tech-tag">Web Security</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-date">Completed: Jul 2023</span>
+                            <!-- <a href="#" class="project-link view-details" data-project="4">Read More →</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Password Manager -->
+                <div class="project-card" data-category="cryptography tools">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMjAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFlM2E4YSIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlBhc3N3b3JkIE1hbmFnZXI8L3RleHQ+PC9zdmc+" alt="Password Manager">
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                <a href="#" class="project-btn view-details" data-project="5">View Details</a>
+                                <a href="https://github.com/Rohit-Rauniyar01" class="project-btn" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Data Security</span>
+                        <h3 class="project-title">Secure Password Manager</h3>
+                        <p class="project-description">Encrypted password storage system with master password protection and secure credential management.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">Encryption</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-date">Completed: Sep 2023</span>
+                            <!-- <a href="#" class="project-link view-details" data-project="5">Read More →</a> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Firewall Configuration -->
+                <div class="project-card" data-category="network">
+                    <div class="project-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMjAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzMwMzk5ZiIvPjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkZpcmV3YWxsIENvbmZpZzwvdGV4dD48L3N2Zz4=" alt="Firewall Configuration">
+                        <div class="project-overlay">
+                            <div class="project-actions">
+                                <a href="#" class="project-btn view-details" data-project="6">View Details</a>
+                                <a href="https://github.com/Rohit-Rauniyar01" class="project-btn" target="_blank">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <span class="project-category">Network Security</span>
+                        <h3 class="project-title">Enterprise Firewall Configuration</h3>
+                        <p class="project-description">Comprehensive firewall rule set implementation for enterprise network security and access control.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">iptables</span>
+                            <span class="tech-tag">Network Security</span>
+                            <span class="tech-tag">Access Control</span>
+                        </div>
+                        <div class="project-meta">
+                            <span class="project-date">Completed: Nov 2023</span>
+                            <!-- <a href="#" class="project-link view-details" data-project="6">Read More →</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Projects Section =================-->
+
+    <!-- Project Details Modals -->
+    <!-- Modal 1: Caesar Cipher -->
+    <div id="project-modal-1" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-image">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFlNDBhZiIvPjx0ZXh0IHg9IjQ1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkNhZXNhciBDaXBoZXIgUHJvamVjdDwvdGV4dD48L3N2Zz4=" alt="Caesar Cipher Details">
+            </div>
+            <div class="modal-body">
+                <span class="modal-category">Cryptography</span>
+                <h2 class="modal-title">Caesar Cipher Implementation</h2>
+                <p class="modal-description">
+                    A comprehensive implementation of the Caesar cipher algorithm, one of the simplest and most widely known encryption techniques. This project demonstrates fundamental cryptography concepts and serves as an educational tool for understanding substitution ciphers.
+                </p>
+                
+                <div class="modal-features">
+                    <h4>Key Features</h4>
+                    <ul class="features-list">
+                        <li>Encryption and decryption functionality</li>
+                        <li>Customizable shift key (1-25)</li>
+                        <li>Support for uppercase and lowercase letters</li>
+                        <li>Preservation of numbers and special characters</li>
+                        <li>User-friendly command-line interface</li>
+                        <li>Error handling for invalid inputs</li>
+                    </ul>
+                </div>
+
+                <div class="modal-tech">
+                    <h4>Technologies Used</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python 3</span>
+                        <span class="tech-tag">Cryptography</span>
+                        <span class="tech-tag">Command Line</span>
+                        <span class="tech-tag">Algorithm Design</span>
+                    </div>
+                </div>
+
+                <div class="modal-features">
+                    <h4>Project Impact</h4>
+                    <p>This project helped demonstrate understanding of basic cryptographic principles and laid the foundation for more advanced security implementations. It showcases attention to detail in handling edge cases and user experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Network Sniffer -->
+    <div id="project-modal-2" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-image">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzMwMzk5ZiIvPjx0ZXh0IHg9IjQ1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5ldHdvcmsgVHJhZmZpYyBBbmFseXplcjwvdGV4dD48L3N2Zz4=" alt="Network Sniffer Details">
+            </div>
+            <div class="modal-body">
+                <span class="modal-category">Network Security</span>
+                <h2 class="modal-title">Network Traffic Analyzer</h2>
+                <p class="modal-description">
+                    An advanced network packet sniffer designed for monitoring and analyzing network traffic. This tool helps in security assessment by capturing and examining packets flowing through the network interface.
+                </p>
+                
+                <div class="modal-features">
+                    <h4>Key Features</h4>
+                    <ul class="features-list">
+                        <li>Real-time packet capture and analysis</li>
+                        <li>Protocol identification (TCP, UDP, ICMP)</li>
+                        <li>Source and destination IP tracking</li>
+                        <li>Port scanning detection</li>
+                        <li>Custom filter rules</li>
+                        <li>Exportable analysis reports</li>
+                    </ul>
+                </div>
+
+                <div class="modal-tech">
+                    <h4>Technologies Used</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scapy</span>
+                        <span class="tech-tag">Socket Programming</span>
+                        <span class="tech-tag">Network Protocols</span>
+                    </div>
+                </div>
+
+                <div class="modal-features">
+                    <h4>Project Impact</h4>
+                    <p>This project enhanced understanding of network protocols and security monitoring. It provides valuable insights into network traffic patterns and potential security threats.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Secure File Transfer -->
+    <div id="project-modal-3" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-image">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzA2YjZkNCIvPjx0ZXh0IHg9IjQ1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVuY3J5cHRlZCBGaWxlIFRyYW5zZmVyPC90ZXh0Pjwvc3ZnPg==" alt="Secure File Transfer Details">
+            </div>
+            <div class="modal-body">
+                <span class="modal-category">Data Security</span>
+                <h2 class="modal-title">Encrypted File Transfer System</h2>
+                <p class="modal-description">
+                    A secure file transfer application implementing end-to-end encryption to ensure data confidentiality during transmission. This system protects sensitive files from unauthorized access during network transfer.
+                </p>
+                
+                <div class="modal-features">
+                    <h4>Key Features</h4>
+                    <ul class="features-list">
+                        <li>AES-256 encryption for file security</li>
+                        <li>Secure key exchange mechanism</li>
+                        <li>File integrity verification</li>
+                        <li>Progress tracking for large files</li>
+                        <li>Error recovery and retry mechanism</li>
+                        <li>Cross-platform compatibility</li>
+                    </ul>
+                </div>
+
+                <div class="modal-tech">
+                    <h4>Technologies Used</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">AES Encryption</span>
+                        <span class="tech-tag">Socket Programming</span>
+                        <span class="tech-tag">Cryptography</span>
+                    </div>
+                </div>
+
+                <div class="modal-features">
+                    <h4>Project Impact</h4>
+                    <p>This project demonstrates practical application of encryption techniques for secure data transmission, addressing real-world security concerns in file sharing and communication.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: Web Vulnerability Scanner -->
+    <div id="project-modal-4" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-image">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzNiODJmNiIvPjx0ZXh0IHg9IjQ1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPldlYiBWdWxuZXJhYmlsaXR5IFNjYW5uZXI8L3RleHQ+PC9zdmc+" alt="Web Vulnerability Scanner Details">
+            </div>
+            <div class="modal-body">
+                <span class="modal-category">Web Security</span>
+                <h2 class="modal-title">Web Application Security Scanner</h2>
+                <p class="modal-description">
+                    An automated vulnerability scanner designed to identify common security issues and misconfigurations in web applications. This tool helps in proactive security assessment and compliance checking.
+                </p>
+                
+                <div class="modal-features">
+                    <h4>Key Features</h4>
+                    <ul class="features-list">
+                        <li>SQL injection detection</li>
+                        <li>Cross-site scripting (XSS) testing</li>
+                        <li>Directory traversal checks</li>
+                        <li>SSL/TLS configuration analysis</li>
+                        <li>Security header verification</li>
+                        <li>Comprehensive reporting</li>
+                    </ul>
+                </div>
+
+                <div class="modal-tech">
+                    <h4>Technologies Used</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OWASP Guidelines</span>
+                        <span class="tech-tag">Web Security</span>
+                        <span class="tech-tag">HTTP Protocols</span>
+                    </div>
+                </div>
+
+                <div class="modal-features">
+                    <h4>Project Impact</h4>
+                    <p>This project provides hands-on experience with web application security testing and helps identify common vulnerabilities before they can be exploited by malicious actors.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: Password Manager -->
+    <div id="project-modal-5" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-image">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzFlM2E4YSIvPjx0ZXh0IHg9IjQ1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNlY3VyZSBQYXNzd29yZCBNYW5hZ2VyPC90ZXh0Pjwvc3ZnPg==" alt="Password Manager Details">
+            </div>
+            <div class="modal-body">
+                <span class="modal-category">Data Security</span>
+                <h2 class="modal-title">Secure Password Manager</h2>
+                <p class="modal-description">
+                    An encrypted password storage system that provides secure credential management with master password protection. This application ensures safe storage and retrieval of sensitive login information.
+                </p>
+                
+                <div class="modal-features">
+                    <h4>Key Features</h4>
+                    <ul class="features-list">
+                        <li>Master password authentication</li>
+                        <li>AES-256 encryption for stored passwords</li>
+                        <li>Secure password generator</li>
+                        <li>Categories and tags for organization</li>
+                        <li>Auto-fill functionality</li>
+                        <li>Backup and restore capabilities</li>
+                    </ul>
+                </div>
+
+                <div class="modal-tech">
+                    <h4>Technologies Used</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Encryption</span>
+                        <span class="tech-tag">GUI Development</span>
+                    </div>
+                </div>
+
+                <div class="modal-features">
+                    <h4>Project Impact</h4>
+                    <p>This project addresses the critical need for secure password management and demonstrates practical application of encryption techniques for protecting sensitive user data.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Firewall Configuration -->
+    <div id="project-modal-6" class="project-modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <div class="modal-image">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA5MDAgNDAwIj48cmVjdCB3aWR0aD0iOTAwIiBoZWlnaHQ9IjQwMCIgZmlsbD0iIzMwMzk5ZiIvPjx0ZXh0IHg9IjQ1MCIgeT0iMjAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMzYiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVudGVycHJpc2UgRmlyZXdhbGwgQ29uZmlnPC90ZXh0Pjwvc3ZnPg==" alt="Firewall Configuration Details">
+            </div>
+            <div class="modal-body">
+                <span class="modal-category">Network Security</span>
+                <h2 class="modal-title">Enterprise Firewall Configuration</h2>
+                <p class="modal-description">
+                    A comprehensive firewall rule set implementation designed for enterprise network security. This project focuses on creating robust access control policies to protect network infrastructure.
+                </p>
+                
+                <div class="modal-features">
+                    <h4>Key Features</h4>
+                    <ul class="features-list">
+                        <li>Stateful packet inspection</li>
+                        <li>Application-layer filtering</li>
+                        <li>IP whitelisting and blacklisting</li>
+                        <li>Port-based access control</li>
+                        <li>Logging and monitoring rules</li>
+                        <li>Fail-safe default policies</li>
+                    </ul>
+                </div>
+
+                <div class="modal-tech">
+                    <h4>Technologies Used</h4>
+                    <div class="project-tech">
+                        <span class="tech-tag">iptables</span>
+                        <span class="tech-tag">Linux</span>
+                        <span class="tech-tag">Network Security</span>
+                        <span class="tech-tag">Access Control</span>
+                    </div>
+                </div>
+
+                <div class="modal-features">
+                    <h4>Project Impact</h4>
+                    <p>This project demonstrates expertise in network security configuration and provides practical experience in implementing enterprise-level security controls.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--================ Start Newsletter Area =================-->
+    <section class="newsletter_area">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-12">
+                    <div class="subscription_box text-center">
+                        <h2 class="text-uppercase text-white">Interested in My Work?</h2>
+                        <p class="text-white">
+                            Let's discuss how I can help secure your digital assets and implement robust security solutions.
+                        </p>
+                        <a href="Index.html#contact" class="primary_btn">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================ End Newsletter Area =================-->
+        
+    <!--================Footer Area =================-->
+	<footer class="footer_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="footer_top flex-column">
+                        <div class="footer_logo">
+                            <a href="index.html">
+                                <div class="logo" style="margin-bottom: 1rem; color:white;">Rohit <span>Rauniyar</span></div>
+                            </a>
+                            <h4>Follow My Security Journey</h4>
+                        </div>
+                        <div class="footer_social">
+                            <a href="https://github.com/Rohit-Rauniyar01" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/rohitrauniyar-rr/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://x.com/Rohit456321" target="_blank"><i class="fab fa-twitter"></i></a>
+                            <a href="mailto:rohitgupta2019email@gmail.com"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row footer_bottom justify-content-center">
+                <p class="col-lg-8 col-sm-12 footer-text">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+                    by 
+                    Rohit Rauniyar. All rights reserved.
+                </p>
+                
+            </div>
+        </div>
+    </footer>
+    <!--================End Footer Area =================-->
+    
+    <!-- Optional JavaScript -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/theme.js"></script>
+
+    <script>
+        // Project Modal Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const viewDetailsBtns = document.querySelectorAll('.view-details');
+            const modals = document.querySelectorAll('.project-modal');
+            const closeBtns = document.querySelectorAll('.modal-close');
+            
+            // Function to open modal
+            function openModal(projectId) {
+                const modal = document.getElementById(`project-modal-${projectId}`);
+                if (modal) {
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            // Function to close modal
+            function closeModal(modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Add click event to all view details buttons
+            viewDetailsBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const projectId = this.getAttribute('data-project');
+                    openModal(projectId);
+                });
+            });
+            
+            // Add click event to close buttons
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const modal = this.closest('.project-modal');
+                    closeModal(modal);
+                });
+            });
+            
+            // Close modal when clicking outside
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal(this);
+                    }
+                });
+            });
+
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    modals.forEach(modal => {
+                        if (modal.style.display === 'block') {
+                            closeModal(modal);
+                        }
+                    });
+                }
+            });
+
+            // Smooth scrolling for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
